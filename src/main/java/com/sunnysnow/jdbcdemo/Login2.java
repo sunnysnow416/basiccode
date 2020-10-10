@@ -35,9 +35,9 @@ public class Login2 {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            JdbcUtil.release(rs,pstmt,conn);
         }
-
-        JdbcUtil.release(rs,pstmt,conn);
     }
 
 }
