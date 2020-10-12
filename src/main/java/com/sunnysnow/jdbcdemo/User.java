@@ -4,6 +4,9 @@ package com.sunnysnow.jdbcdemo;
  * 用户实体类
  */
 public class User {
+    /**
+     * 声明数据对象最好使用包装类，将int改为Integer
+     */
     private int id;
     private String username;
     private String password;
