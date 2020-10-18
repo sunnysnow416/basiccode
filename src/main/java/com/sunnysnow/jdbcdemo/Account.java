@@ -19,6 +19,9 @@ public class Account {
     public static void getAcount(float m,int aId,int bId ){
         try {
             conn = JdbcUtil.getConntion();
+            //1.开启事务
+            conn.setAutoCommit(false);
+
             String sql1="update account set money=money-? where id=?";
             String sql2="update account set money=money+? where id=?";
             pstmt1 = conn.prepareStatement(sql1);
@@ -30,9 +33,20 @@ public class Account {
             pstmt2.setInt(2,bId);
 
             pstmt1.executeUpdate();
+            //故意创建一个异常，测试事务
+            int i = 3 % 0;
             pstmt2.executeUpdate();
 
+            //2、如果没有一次则提交事务
+            conn.commit();
+
         } catch (SQLException throwables) {
+            //3、如果有异常，则回归事务
+            try {
+                conn.rollback();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             throwables.printStackTrace();
         }finally {
             JdbcUtil.release(rs,pstmt1,conn);

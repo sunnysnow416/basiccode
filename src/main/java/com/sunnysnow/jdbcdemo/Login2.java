@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 /**
- * 联系jdbc，模拟用户登录
+ * 练习jdbc，模拟用户登录
  * 抽取公共的工具类，并调用
  */
 public class Login2 {
