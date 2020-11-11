@@ -23,7 +23,6 @@ public class Login2 {
         conn = JdbcUtil.getConntion();
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, user);
             pstmt.setString(2, password);
             rs = pstmt.executeQuery();
